@@ -1,5 +1,4 @@
 <?php
-
 //phpinfo();
 //open connection to mysql db
 $connection = mysqli_connect("ausantnet.fatcowmysql.com","cs633user","termproject001","cs633") or die("Error " . mysqli_error($connection));
@@ -19,8 +18,7 @@ $data = [
     "max_score" => 100,
     "hits" =>  $emparray
 ];
-//echo json_encode($emparray);
-//echo $_GET['callback'] . '('.json_encode($emparray).')';
+
 $callback = "";
 if (array_key_exists('callback', $_GET) == TRUE) {
     $callback = $_GET['callback'];
