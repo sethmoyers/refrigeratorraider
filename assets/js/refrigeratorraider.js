@@ -39,7 +39,14 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	 		$scope.items[index].quantity = parseInt($scope.items[index].quantity) - 1;
 		}
 	};
-	$scope.saveItem = function() {
+	$scope.saveList = function() {
+		var storage = JSON.stringify($scope.items);
+		localStorage.setItem("my_cart", storage);
+	};
+	$scope.deleteList = function() {
+		localStorage.removeItem("my_cart");
+	};
+	$scope.placeOrder = function() {
 		var storage = JSON.stringify($scope.items);
 		localStorage.setItem("my_cart", storage);
 	};

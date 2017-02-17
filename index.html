@@ -122,20 +122,6 @@ Date: February 13, 2017
 								<th></th>
 							</tr>
 							</thead>
-							<tfoot>
-								<tr>
-									<th></th>
-									<th>
-									<button ng-click="newItem()">
-										New
-									</button></th>
-									<th>
-									<button ng-click="saveItem()">
-										Save
-									</button></th>
-									<th></th>
-								</tr>
-							</tfoot>
 							<tbody ng-repeat="item in items">
 								<tr>
 									<td>
@@ -152,6 +138,10 @@ Date: February 13, 2017
 								</tr>
 							</tbody>
 						</table>
+						<button style="width:275px" ng-click="newItem()">Add Item</button>
+						<button style="width:275px" ng-click="saveList()">Save List</button>
+						<button style="width:275px" ng-click="placeOrder()">Place Order</button>
+						<button style="width:275px" ng-click="deleteList()">Delete List</button>
 						<div ng-init="loadShoppingList()"</div>
 						</div>
 						</article>
