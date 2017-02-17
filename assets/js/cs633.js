@@ -1,9 +1,9 @@
 // Seth writing logon here!
-$scope.logonSystem = function() {
+var logonSystem = function() {
 	//$http.getUser()
-	var UserName = document.getElementById("reg_email").value
+	var UserName = document.getElementById("reg_email").value;
 	console.log(UserName);
-}
+};
 
 $('#loginSubmit').on("click", function() {
 	var UserName = $('#UserEmail').val();
@@ -25,7 +25,7 @@ $('#loginSubmit').on("click", function() {
 		dataType : 'jsonp',
 		success : function(data) {
 			console.log(data);
-			var user = data
+			var user = data;
 		}
 	});
 }); 

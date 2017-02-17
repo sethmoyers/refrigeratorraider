@@ -2,6 +2,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	// check to see if local storage is empty
 	if (localStorage.getItem("my_cart") != null) {
 		console.log("Local Storage Exist!");
+		var isCart = true;
 		loadCart();
 		// load from local storage
 	} else {
@@ -56,8 +57,10 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		$scope.items = JSON.parse(storage);
 	}
 	$scope.loadShoppingList = function() {
-		$http.get("data/getshoppinglist.php").success(function(data, status, headers, config) {
-			$scope.items = data.hits
-		});
+		if (!isCart) {
+			$http.get("data/getshoppinglist.php").success(function(data, status, headers, config) {
+				$scope.items = data.hits
+			});
+		}
 	}
 });
