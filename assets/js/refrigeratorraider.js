@@ -48,8 +48,7 @@
 			$scope.items = JSON.parse(storage);
         }
         $scope.loadShoppingList = function() {
-            //$http.jsonp("../data/getshoppinglist.php?callback=JSON_CALLBACK")
-            $http.get("../data/getshoppinglist.php")
+            $http.get("data/getshoppinglist.php")
             .success(function (data, status, headers, config) {
                 $scope.items = data.hits
             });
