@@ -5,7 +5,7 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 Modified by: Bryant Austin and Seth Moyers
 For: Boston University Class Project CS633
-	Term Project for Team 8:	Bryant Austin
+		Term Project for Team 8:	Bryant Austin
 							Kayla Birdsall
 							Ant Cassetta
 							Seth Moyers
@@ -45,6 +45,7 @@ Date: February 13, 2017
 						<li><a href="#view">View</a></li>
 						<li><a href="#order">Order</a></li>
 						<li><a href="#about">About</a></li>
+						<li><a href="#help">Help</a></li>
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 				</nav>
@@ -62,7 +63,7 @@ Date: February 13, 2017
 								<tr>
 									<th>Description</th>
 									<th>Brand</th>
-									<th>Size</th>
+									<th>QTY</th>
 								</tr>
 							</thead>
 							<tfoot>
@@ -99,7 +100,8 @@ Date: February 13, 2017
 							<tr>
 								<th>Description</th>
 								<th>Brand</th>
-								<th>Size</th>
+								<th>Qty</th>
+								<th></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -118,16 +120,19 @@ Date: February 13, 2017
 						<tbody ng-repeat="item in items">
 							<tr>
 								<td>
-									<input class="black" ng-model="item.ITEM_DESCRIPTION" size="20">
+									<input class="black" ng-model="item.ITEM_DESCRIPTION" size="15">
 								</td>
 								<td>
 									<input class="black" ng-model="item.ITEM_BRAND" size="11">
 								</td>
 								<td>
-									<input class="black" ng-model="item.ITEM_SIZE" size="7">
+									<input class="black" ng-model="item.ITEM_SIZE" size="3">
 								</td>
 								<td>
-									<button ng-click="removeItem($index)">Remove</button>
+									<button class="fa fa-minus-square" aria-hidden="true" ng-click="removeItem($index)"></button>
+								</td>
+								<td>
+									<button class="fa fa-plus-square" aria-hidden="true" ng-click="removeItem($index)"></button>
 								</td>
 							</tr>
 						</tbody>
@@ -167,6 +172,44 @@ Date: February 13, 2017
 						<li><input type="reset" value="Reset" /></li>
 					</ul>
 				</form>
+				<ul class="icons">
+					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</article>
+			<!-- Help -->
+			<article id="help">
+				<h2 class="major">Help</h2>
+				<div>
+					<p>Refrigerator Raider is a web-based application designed for both personal and commercial
+						refrigerator inventory management.
+						The app allows users to input products and related quantities into an online
+						Virtual refrigerator and receive alerts when items are running low.
+						
+						For help or enhancement requests, please contact us at (818) 555-5111
+					or at customerservice@abcmsdevelopment.com.</p>
+					<p>Q: Who are the creators?</p>
+					<p>The creators of this project are all students at Boston University. The project team was established as a
+						part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security
+					Management.</p>
+					<p>Q: Where did the idea of Refrigerator Raiders come from?</p>
+					<p>The team originally started out with a bunch of different ideas, including a meal tracking application to input
+						and view nutritional content and an application that allows you to share what food is in your fridge and it
+						provides recipes based on that information. With further team discussion, the idea evolved into Refrigerator
+					Raiders.</p>
+					<p>Q: What did you use to create the application?</p>
+					<p>To create the application, we used HTML5/JavaScript/PHP and other JavaScript Libraries and HTML Templates.</p>
+					<p>Q: How come I cannot view my friend or relative's fridge?</p>
+					<p>The fridge owner must grant a Refrigerator raider (or view only user) to see the contents of the fridge.
+						If you have trouble with setting up these permissions, please contact us at (818) 555-5111 or at
+					customerservice@abcmsdevelopment.com.</p>
+					<p>Q: What enhancements will come next for Refrigerator Raiders?</p>
+					<p>The creators of this project are all students at Boston University. The project team was established as a
+						part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security
+					Management.</p>
+				</div>
 				<ul class="icons">
 					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
