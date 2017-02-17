@@ -5,11 +5,11 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 Modified by: Bryant Austin and Seth Moyers
 For: Boston University Class Project CS633
-		Term Project for Team 8:	Bryant Austin
-							Kayla Birdsall
-							Ant Cassetta
-							Seth Moyers
-							Nick Scala
+Term Project for Team 8:	Bryant Austin
+Kayla Birdsall
+Ant Cassetta
+Seth Moyers
+Nick Scala
 Date: February 13, 2017
 -->
 <html lang='en' ng-app="myApp">
@@ -19,9 +19,12 @@ Date: February 13, 2017
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<noscript>
+			<link rel="stylesheet" href="assets/css/noscript.css" />
+		</noscript>
 		<script src="assets/js/angular10.js"></script>
 		<script src="assets/js/refrigeratorraider.js"></script>
+		<script src="assets/js/cs633.js"></script>
 	</head>
 	<body ng-controller="CartController">
 		<!-- Wrapper -->
@@ -34,19 +37,38 @@ Date: February 13, 2017
 				<div class="content">
 					<div class="inner">
 						<h1>Refrigerator Raider</h1>
-						<p><!--[-->Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. <!--]--><br />
-						<!--[-->The app allows users to input products and related quantities into an online virtual refrigerator and receive alerts when items are running low.<!--]--></p>
+						<p>
+							<!--[-->
+							Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. <!--]-->
+							<br />
+							<!--[-->
+							The app allows users to input products and related quantities into an online virtual refrigerator and receive alerts when items are running low.<!--]-->
+						</p>
 					</div>
 				</div>
 				<nav>
 					<ul>
-						<li><a href="#logon">Logon</a></li>
-						<li><a href="#register">Register</a></li>
-						<li><a href="#view">View</a></li>
-						<li><a href="#order">Order</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#help">Help</a></li>
-						<li><a href="#contact">Contact</a></li>
+						<li>
+							<a href="#logon">Logon</a>
+						</li>
+						<li>
+							<a href="#register">Register</a>
+						</li>
+						<li>
+							<a href="#view">View</a>
+						</li>
+						<li>
+							<a href="#order">Order</a>
+						</li>
+						<li>
+							<a href="#about">About</a>
+						</li>
+						<li>
+							<a href="#help">Help</a>
+						</li>
+						<li>
+							<a href="#contact">Contact</a>
+						</li>
 					</ul>
 				</nav>
 			</header>
@@ -57,7 +79,7 @@ Date: February 13, 2017
 					<h2 class="major">Refrigerator Contents</h2>
 					<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 					<div class="table-wrapper">
-						
+
 						<table>
 							<thead>
 								<tr>
@@ -67,23 +89,17 @@ Date: February 13, 2017
 								</tr>
 							</thead>
 							<tfoot>
-							<tr>
-							</tr>
+								<tr></tr>
 							</tfoot>
 							<tbody ng-repeat="item in items">
 								<tr>
+									<td> {{item.ITEM_DESCRIPTION}} </td>
+									<td> {{item.ITEM_BRAND}} </td>
+									<td> {{item.ITEM_SIZE}} </td>
 									<td>
-										{{item.ITEM_DESCRIPTION}}
-									</td>
-									<td>
-										{{item.ITEM_BRAND}}
-									</td>
-									<td>
-										{{item.ITEM_SIZE}}
-									</td>
-									<td>
-										<button ng-click="removeItem($index)">Remove</button>
-									</td>
+									<button ng-click="removeItem($index)">
+										Remove
+									</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -94,7 +110,7 @@ Date: February 13, 2017
 				<article id="order">
 					<h2 class="major">Shopping List</h2>
 					<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-					
+
 					<div class="table-wrapper">
 						<table>
 							<tr>
@@ -104,200 +120,254 @@ Date: February 13, 2017
 								<th></th>
 								<th></th>
 							</tr>
-						</thead>
-						<tfoot>
-						<tr>
-							<th></th>
-							<th>
-								<button ng-click="newItem()">New</button>
-							</th>
-							<th>
-								<button ng-click="saveItem()">Save</button>
-							</th>
-							<th></th>
-						</tr>
-						</tfoot>
-						<tbody ng-repeat="item in items">
-							<tr>
-								<td>
+							</thead>
+							<tfoot>
+								<tr>
+									<th></th>
+									<th>
+									<button ng-click="newItem()">
+										New
+									</button></th>
+									<th>
+									<button ng-click="saveItem()">
+										Save
+									</button></th>
+									<th></th>
+								</tr>
+							</tfoot>
+							<tbody ng-repeat="item in items">
+								<tr>
+									<td>
 									<input class="black" ng-model="item.ITEM_DESCRIPTION" size="15">
-								</td>
-								<td>
+									</td>
+									<td>
 									<input class="black" ng-model="item.ITEM_BRAND" size="11">
-								</td>
-								<td>
+									</td>
+									<td>
 									<input class="black" ng-model="item.ITEM_SIZE" size="3">
-								</td>
-								<td>
-									<button class="fa fa-minus-square" aria-hidden="true" ng-click="removeItem($index)"></button>
-								</td>
-								<td>
-									<button class="fa fa-plus-square" aria-hidden="true" ng-click="removeItem($index)"></button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div ng-init="loadShoppingList()"</div>
-				</div>
-			</article>
-			<!-- About -->
-			<article id="about">
-				<h2 class="major">About</h2>
-				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-				<p>The purpose of the term project is to follow key phases of software product development.
-					It is a chance to pilot, adopt and implement the best practices covered in the course.
-				</p>
-				<p></p>
-				<p>Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. The app allows users to input products and related quantities into an online virtual refrigerator and receive alerts when items are running low.
-				</p>
-			</article>
-			<!-- Contact -->
-			<article id="contact">
-				<h2 class="major">Contact</h2>
-				<form method="post" action="#">
-					<div class="field half first">
+									</td>
+									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="removeItem($index)"></button></td>
+									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="removeItem($index)"></button></td>
+								</tr>
+							</tbody>
+						</table>
+						<div ng-init="loadShoppingList()"</div>
+						</div>
+						</article>
+						<!-- About -->
+						<article id="about">
+						<h2 class="major">About</h2>
+						<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+						<p>The purpose of the term project is to follow key phases of software product development.
+						It is a chance to pilot, adopt and implement the best practices covered in the course.
+						</p>
+						<p></p>
+						<p>Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. The app allows users to input products and related quantities into an online virtual refrigerator and receive alerts when items are running low.
+						</p>
+						</article>
+						<!-- Contact -->
+						<article id="contact">
+						<h2 class="major">Contact</h2>
+						<form method="post" action="#">
+						<div class="field half first">
 						<label for="name">Name</label>
 						<input type="text" name="name" id="name" />
-					</div>
-					<div class="field half">
+						</div>
+						<div class="field half">
 						<label for="email">Email</label>
 						<input type="text" name="email" id="email" />
-					</div>
-					<div class="field">
+						</div>
+						<div class="field">
 						<label for="message">Message</label>
 						<textarea name="message" id="message" rows="4"></textarea>
-					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Send Message" class="special" /></li>
-						<li><input type="reset" value="Reset" /></li>
-					</ul>
-				</form>
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</article>
-			<!-- Help -->
-			<article id="help">
-				<h2 class="major">Help</h2>
-				<div>
-					<p>Refrigerator Raider is a web-based application designed for both personal and commercial
-						refrigerator inventory management.
-						The app allows users to input products and related quantities into an online
-						Virtual refrigerator and receive alerts when items are running low.
-						
-						For help or enhancement requests, please contact us at (818) 555-5111
-					or at customerservice@abcmsdevelopment.com.</p>
-					<p>Q: Who are the creators?</p>
-					<p>The creators of this project are all students at Boston University. The project team was established as a
-						part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security
-					Management.</p>
-					<p>Q: Where did the idea of Refrigerator Raiders come from?</p>
-					<p>The team originally started out with a bunch of different ideas, including a meal tracking application to input
-						and view nutritional content and an application that allows you to share what food is in your fridge and it
-						provides recipes based on that information. With further team discussion, the idea evolved into Refrigerator
-					Raiders.</p>
-					<p>Q: What did you use to create the application?</p>
-					<p>To create the application, we used HTML5/JavaScript/PHP and other JavaScript Libraries and HTML Templates.</p>
-					<p>Q: How come I cannot view my friend or relative's fridge?</p>
-					<p>The fridge owner must grant a Refrigerator raider (or view only user) to see the contents of the fridge.
-						If you have trouble with setting up these permissions, please contact us at (818) 555-5111 or at
-					customerservice@abcmsdevelopment.com.</p>
-					<p>Q: What enhancements will come next for Refrigerator Raiders?</p>
-					<p>The creators of this project are all students at Boston University. The project team was established as a
-						part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security
-					Management.</p>
-				</div>
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</article>
-			
-			
-			<!-- Logon SSM 02/16/17-->
-			<article id="logon">
-				<h2 class="major">Logon</h2>
-				<form method="post" action="#">			
-					<div class="field half first">
-						<label for="reg_mail">Email</label>
-						<input type="text" name="UserEmail" id="UserEmail" value="">
-					</div>
-					<div></div>
-					<div class="field half">
-						<label for="UserPassword">Password</label>
-						<input type="text" name="UserPassword" id="UserPassword" />
-					</div>
-					<ul class="actions">
-						<li><input id="loginSubmit" type="button" class="special" value="Logon"/></li>
-						<!-- <li><button ng-click="logonSystem($index)">Logon</button></li> -->
-						<li><input type="reset" value="Reset" /></li>
-					</ul>
+						</div>
+						<ul class="actions">
+							<li>
+								<input type="submit" value="Send Message" class="special" />
+							</li>
+							<li>
+								<input type="reset" value="Reset" />
+							</li>
+						</ul>
+						</form>
+						<ul class="icons">
+							<li>
+								<a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a>
+							</li>
+							<li>
+								<a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a>
+							</li>
+							<li>
+								<a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a>
+							</li>
+							<li>
+								<a href="#" class="icon fa-github"><span class="label">GitHub</span></a>
+							</li>
+						</ul>
+				</article>
+				<!-- Help -->
+				<article id="help">
+					<h2 class="major">Help</h2>
+					<div>
+						<p>
+							Refrigerator Raider is a web-based application designed for both personal and commercial
+							refrigerator inventory management.
+							The app allows users to input products and related quantities into an online
+							Virtual refrigerator and receive alerts when items are running low.
 
-				</form>
-			</article>
-						
-			
-			
-			
-			<!-- Register -->
-			<article id="register">
-				<h2 class="major">Register</h2>
-				<form method="post" action="#">
-					<div class="field half first">
-						<label for="reg_firstname">First Name</label>
-						<input type="text" name="reg_firstname" id="reg_firstname" />
+							For help or enhancement requests, please contact us at (818) 555-5111
+							or at customerservice@abcmsdevelopment.com.
+						</p>
+						<p>
+							Q: Who are the creators?
+						</p>
+						<p>
+							The creators of this project are all students at Boston University. The project team was established as a
+							part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security
+							Management.
+						</p>
+						<p>
+							Q: Where did the idea of Refrigerator Raiders come from?
+						</p>
+						<p>
+							The team originally started out with a bunch of different ideas, including a meal tracking application to input
+							and view nutritional content and an application that allows you to share what food is in your fridge and it
+							provides recipes based on that information. With further team discussion, the idea evolved into Refrigerator
+							Raiders.
+						</p>
+						<p>
+							Q: What did you use to create the application?
+						</p>
+						<p>
+							To create the application, we used HTML5/JavaScript/PHP and other JavaScript Libraries and HTML Templates.
+						</p>
+						<p>
+							Q: How come I cannot view my friend or relative's fridge?
+						</p>
+						<p>
+							The fridge owner must grant a Refrigerator raider (or view only user) to see the contents of the fridge.
+							If you have trouble with setting up these permissions, please contact us at (818) 555-5111 or at
+							customerservice@abcmsdevelopment.com.
+						</p>
+						<p>
+							Q: What enhancements will come next for Refrigerator Raiders?
+						</p>
+						<p>
+							The creators of this project are all students at Boston University. The project team was established as a
+							part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security
+							Management.
+						</p>
 					</div>
-					<div class="field half">
-						<label for="reg_lastname">Last Name</label>
-						<input type="text" name="reg_lastname" id="reg_lastname" />
-					</div>
-					<div class="field half first">
-						<label for="reg_mail">Email</label>
-						<input type="text" name="reg_email" id="reg_email" />
-					</div>
-					<div></div>
-					<div class="field half">
-						<label for="reg_password1">Password</label>
-						<input type="text" name="reg_password1" id="reg_password1" />
-					</div>
-					<div class="field">
-						<label for="reg_password2">Re-Type Password</label>
-						<input type="text" name="reg_password2" id="reg_password2" />
-					</div>
-					<div class="field first">
-						<label for="reg_message">Message</label>
-						<textarea name="reg_message" id="reg_message" rows="4"></textarea>
-					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Register" class="special" /></li>
-						<li><input type="reset" value="Reset" /></li>
+					<ul class="icons">
+						<li>
+							<a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-github"><span class="label">GitHub</span></a>
+						</li>
 					</ul>
-				</form>
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-				</ul>
-			</article>
-			
+				</article>
+
+				<!-- Logon SSM 02/16/17-->
+				<article id="logon">
+					<h2 class="major">Logon</h2>
+					<form method="post" action="#">
+						<div class="field half first">
+							<label for="reg_mail">Email</label>
+							<input type="text" name="UserEmail" id="UserEmail" value="">
+						</div>
+						<div></div>
+						<div class="field half">
+							<label for="UserPassword">Password</label>
+							<input type="text" name="UserPassword" id="UserPassword" />
+						</div>
+						<ul class="actions">
+							<li>
+								<input id="loginSubmit" type="button" class="special" value="Logon"/>
+							</li>
+							<!-- <li><button ng-click="logonSystem($index)">Logon</button></li> -->
+							<li>
+								<input type="reset" value="Reset" />
+							</li>
+						</ul>
+
+					</form>
+				</article>
+
+				<!-- Register -->
+				<article id="register">
+					<h2 class="major">Register</h2>
+					<form method="post" action="#">
+						<div class="field half first">
+							<label for="reg_firstname">First Name</label>
+							<input type="text" name="reg_firstname" id="reg_firstname" />
+						</div>
+						<div class="field half">
+							<label for="reg_lastname">Last Name</label>
+							<input type="text" name="reg_lastname" id="reg_lastname" />
+						</div>
+						<div class="field half first">
+							<label for="reg_mail">Email</label>
+							<input type="text" name="reg_email" id="reg_email" />
+						</div>
+						<div></div>
+						<div class="field half">
+							<label for="reg_password1">Password</label>
+							<input type="text" name="reg_password1" id="reg_password1" />
+						</div>
+						<div class="field">
+							<label for="reg_password2">Re-Type Password</label>
+							<input type="text" name="reg_password2" id="reg_password2" />
+						</div>
+						<div class="field first">
+							<label for="reg_message">Message</label>
+							<textarea name="reg_message" id="reg_message" rows="4"></textarea>
+						</div>
+						<ul class="actions">
+							<li>
+								<input type="submit" value="Register" class="special" />
+							</li>
+							<li>
+								<input type="reset" value="Reset" />
+							</li>
+						</ul>
+					</form>
+					<ul class="icons">
+						<li>
+							<a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li>
+							<a href="#" class="icon fa-github"><span class="label">GitHub</span></a>
+						</li>
+					</ul>
+				</article>
+
+			</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">
+					&copy; Refrigerator Raider: <a href="http://www.bu.edu">BU MET CS633</a>.
+				</p>
+			</footer>
 		</div>
-		<!-- Footer -->
-		<footer id="footer">
-			<p class="copyright">&copy; Refrigerator Raider: <a href="http://www.bu.edu">BU MET CS633</a>.</p>
-		</footer>
-	</div>
-	<!-- BG -->
-	<div id="bg"></div>
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-</body>
+		<!-- BG -->
+		<div id="bg"></div>
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
 </html>
