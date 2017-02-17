@@ -7,17 +7,17 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	} else {
 		// else load default if nothing found in local storage
 		$scope.items = [{
-			ITEM_DESCRIPTION : 'Eggs',
-			ITEM_BRAND : 'Stop and Shop',
-			ITEM_SIZE : '1 Dozen'
+			item_description : 'Eggs',
+			item_brand : 'Stop and Shop',
+			item_quantity : 1
 		}, {
-			ITEM_DESCRIPTION : 'Bread',
-			ITEM_BRAND : 'Wonder',
-			ITEM_SIZE : '1 Loaf'
+			item_description : 'Bread',
+			item_brand : 'Wonder',
+			item_quantity : 1
 		}, {
-			ITEM_DESCRIPTION : 'Milk',
-			ITEM_BRAND : 'Dairy Fresh',
-			ITEM_SIZE : '1 Gallon'
+			item_description : 'Milk',
+			item_brand : 'Dairy Fresh',
+			item_quantity : 1
 		}];
 	}
 	$scope.removeItem = function(index) {
@@ -25,10 +25,18 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	};
 	$scope.newItem = function(index) {
 		$scope.items.push({
-			ITEM_DESCRIPTION : 'New Item',
-			ITEM_BRAND : 'Store Brand',
-			ITEM_SIZE : '1 Each'
+			item_description : 'New Item',
+			item_brand : 'Store Brand',
+			item_quantity : 1
 		});
+	};
+	 $scope.incrementItem = function(index) {
+	 	$scope.items[index].quantity = parseInt($scope.items[index].quantity) + 1;
+	};
+	 $scope.decrementItem = function(index) {
+	 	if (parseInt($scope.items[index].quantity) > 0) {
+	 		$scope.items[index].quantity = parseInt($scope.items[index].quantity) - 1;
+		}
 	};
 	$scope.saveItem = function() {
 		var storage = JSON.stringify($scope.items);
@@ -37,7 +45,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	$scope.updateTotal = function() {
 		var sum = 0;
 		angular.forEach($scope.items, function(item) {
-			sum += (item.ITEM_SIZE * item.ITEM_BRAND);
+			sum += (item.item_quantity * item.item_brand);
 		});
 		return sum;
 	};
@@ -47,8 +55,6 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		// parse the data to JSON
 		$scope.items = JSON.parse(storage);
 	}
-
-
 	$scope.loadShoppingList = function() {
 		$http.get("data/getshoppinglist.php").success(function(data, status, headers, config) {
 			$scope.items = data.hits

@@ -93,9 +93,9 @@ Date: February 13, 2017
 							</tfoot>
 							<tbody ng-repeat="item in items">
 								<tr>
-									<td> {{item.ITEM_DESCRIPTION}} </td>
-									<td> {{item.ITEM_BRAND}} </td>
-									<td> {{item.ITEM_SIZE}} </td>
+									<td> {{item.item_description}} </td>
+									<td> {{item.item_brand}} </td>
+									<td> {{item.quantity}} </td>
 									<td>
 									<button ng-click="removeItem($index)">
 										Remove
@@ -138,16 +138,16 @@ Date: February 13, 2017
 							<tbody ng-repeat="item in items">
 								<tr>
 									<td>
-									<input class="black" ng-model="item.ITEM_DESCRIPTION" size="15">
+									<input class="black" ng-model="item.item_description" size="15">
 									</td>
 									<td>
-									<input class="black" ng-model="item.ITEM_BRAND" size="11">
+									<input class="black" ng-model="item.item_brand" size="11">
 									</td>
 									<td>
-									<input class="black" ng-model="item.ITEM_SIZE" size="3">
+									<input class="black" ng-model="item.quantity" size="3">
 									</td>
-									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="removeItem($index)"></button></td>
-									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="removeItem($index)"></button></td>
+									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
+									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td>
 								</tr>
 							</tbody>
 						</table>
