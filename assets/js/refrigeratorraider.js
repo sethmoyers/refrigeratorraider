@@ -47,6 +47,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		localStorage.removeItem("my_cart");
 	};
 	$scope.placeOrder = function() {
+		alert("Thank you for you Order.  Your Order has been placed.");
 		var storage = JSON.stringify($scope.items);
 		localStorage.setItem("my_cart", storage);
 	};
@@ -56,6 +57,38 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 			sum += (item.item_quantity * item.item_brand);
 		});
 		return sum;
+	};
+$scope.getUserMenu = function() {
+		switch ($(usertype).val()) {
+			case '1':  // Refrigerator Owner
+				$('[href="#logon"]').text('Change Persona');
+				$("#fridgeowner").show();
+        		$("#shopping").show();
+        		$("#about").show();
+    			$("#help").show();
+    			$("#supplier").hide();
+    			$("#fridgeraider").hide();
+        		break;
+    		case '2':  // Business Manager
+    			$('[href="#logon"]').text('Change Persona');
+    			$("#fridgeowner").show();
+        		$("#shopping").show();
+    			$("#supplier").show();
+        		$("#about").show();
+    			$("#help").show();
+    			$("#fridgeraider").hide();
+    			// $("article#logon").removeClass("active");
+    			// $("body").removeClass("is-article-visible");
+        		break;
+    		case '3':  // Refrigerator Raider
+    			$('[href="#logon"]').text('Change Persona');
+    			$("#fridgeraider").show();
+        		$("#about").show();
+    			$("#help").show();
+    			$("#fridgeowner").hide();
+    			$("#supplier").hide()
+    			$("#shopping").hide();
+		}
 	};
 	function loadCart() {// load cart from local storage
 		// retrieve data from local storage

@@ -29,3 +29,19 @@ $('#loginSubmit').on("click", function() {
 		}
 	});
 }); 
+
+// ***
+// *** Added by B. Austin
+// *** Code to TURN OFF all menu list items
+// *** except the LOGON Menu item
+// ***
+window.onload = function() {  // execute on form load
+	$("#supplier").hide();
+    $("#about").hide();
+    $("#help").hide();
+    $("#fridgeraider").hide();
+    $("#fridgeowner").hide();
+    $("#shopping").hide();
+};
+	
+
