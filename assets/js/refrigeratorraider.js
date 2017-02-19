@@ -77,6 +77,8 @@ $scope.getUserMenu = function() {
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeraider").hide();
+    			// $("article#logon").removeClass("active");
+    			// $("body").removeClass("is-article-visible");
         		break;
     		case '3':  // Refrigerator Raider
     			$('[href="#logon"]').text('Change Persona');
@@ -87,7 +89,6 @@ $scope.getUserMenu = function() {
     			$("#supplier").hide()
     			$("#shopping").hide();
 		}
-		window.close();
 	};
 	function loadCart() {// load cart from local storage
 		// retrieve data from local storage
