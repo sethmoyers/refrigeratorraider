@@ -77,6 +77,7 @@ $scope.getUserMenu = function() {
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeraider").hide();
+    			// $("article#logon").addClass("close");
     			// $("article#logon").removeClass("active");
     			// $("body").removeClass("is-article-visible");
         		break;
