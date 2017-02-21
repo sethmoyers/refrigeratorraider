@@ -53,7 +53,7 @@ Date: February 13, 2017
 							<a href="#logon">Logon</a>
 						</li>
 						<li id="supplier">
-							<a href="#supplier">Supplier</a>
+							<a href="#view_suppliers">Supplier</a>
 						</li>
 						<li id="fridgeraider">
 							<a href="#fridgeraider">Refrigerator</a>  <!-- Refrigerator for Raider -->
@@ -78,7 +78,6 @@ Date: February 13, 2017
 				<!-- Refrigerator of Raider -->
 				<article id="fridgeraider">
 					<h2 class="major">Refrigerator Contents</h2>
-					<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 					<div class="table-wrapper">
 						<table>
 							<thead>
@@ -105,7 +104,6 @@ Date: February 13, 2017
 			<!-- Refridgerator of Owner -->
 			<article id="fridgeowner">
 				<h2 class="major">Refrigerator Contents</h2>
-				<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 				<div class="table-wrapper">
 					<table>
 						<tr>
@@ -139,7 +137,6 @@ Date: February 13, 2017
 	<!-- Shopping List -->
 	<article id="shopping">
 		<h2 class="major">Shopping List</h2>
-		<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 		<div class="table-wrapper">
 			<table>
 				<tr>
@@ -177,7 +174,6 @@ Date: February 13, 2017
 <!-- About -->
 <article id="about">
 <h2 class="major">About</h2>
-<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 <p>The purpose of the term project is to follow key phases of software product development.
 	It is a chance to pilot, adopt and implement the best practices covered in the course.
 </p>
@@ -225,46 +221,7 @@ Date: February 13, 2017
 		A: With the short class deadline, we limited our scope for the first release. Some enhancement ideas include:  identifying sale items, allowing actual ordering to supermarkets and API sites like Amazon Fresh, filtering options, sending emails for list capabilities, pictures of each item, scanning item barcode to input it into system, and more.
 	</p>
 </div>
-<ul class="icons">
-	<li>
-		<a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a>
-	</li>
-	<li>
-		<a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a>
-	</li>
-	<li>
-		<a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a>
-	</li>
-	<li>
-		<a href="#" class="icon fa-github"><span class="label">GitHub</span></a>
-	</li>
-</ul>
 </article>
-<!-- Logon SSM 02/16/17-->
-<!-- 	<article id="logon">
-	<h2 class="major">Logon</h2>
-	<form method="post" action="#">
-					<div class="field half first">
-									<label for="reg_mail">Email</label>
-									<input type="text" name="UserEmail" id="UserEmail" value="">
-					</div>
-					<div></div>
-					<div class="field half">
-									<label for="UserPassword">Password</label>
-									<input type="text" name="UserPassword" id="UserPassword" />
-					</div>
-					<ul class="actions">
-									<li>
-													<input id="loginSubmit" type="button" class="special" value="Logon"/>
-									</li>
-									<// <li><button ng-click="logonSystem($index)">Logon</button></li>
-									<li>
-													<input type="reset" value="Reset" />
-									</li>
-					</ul>
-	</form>
-</article> -->
-<!-- Logon  BDA 02/18/2017 -->
 <article id="logon">
 <h2 class="major">Logon</h2>
 <div class="field">
@@ -279,7 +236,7 @@ Date: February 13, 2017
 </div>
 <div>
 	<p></p>
-	<button class="button special" ng-click="getUserMenu()">Sign On</button>
+	<button class="button special" ng-click="getUserMenu()" href="#header">Sign On</button>
 </div>
 </article>
 <!-- Supplier -->
@@ -308,8 +265,8 @@ Date: February 13, 2017
 		<input type="text" name="bus_name" id="bus_name" />
 	</div>
 	<ul class="actions">
-		<li>
-			<input type="submit" value="Save" class="special" />
+		<li>\
+			<button class="button" style="width:275px" ng-click="newSupplier()">Add Supplier</button>
 		</li>
 		<li>
 			<input type="reset" value="Reset" />
@@ -317,6 +274,48 @@ Date: February 13, 2017
 	</ul>
 </form>
 </article>
+
+
+<article id="view_suppliers">
+		<h2 class="major">View Suppliers</h2>
+		<div ng-init="loadSuppliers()"></div>
+		<div class="table-wrapper">
+			<table>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Business Name</th>
+					<th>Phone Number</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="supplier in supplier">
+				<tr>
+					<td> <input class="black" ng-model="supplier.first_name" size="15">
+				</td>
+				<td>
+					<input class="black" ng-model="supplier.last_name" size="11">
+				</td>
+				<td>
+					<input class="black" ng-model="supplier.email" size="2">
+				</td>
+				<td>
+					<input class="black" ng-model="supplier.business_name" size="11">
+				</td>
+				<td>
+					<input class="black" ng-model="supplier.phone_number" size="2">
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<button class="button" style="width:275px" ng-click="newSupplier()">Add Item</button>
+	<a href="#supplier">Supplier</a>
+</div>
+</article>
+
+
+
 </div>
 <!-- Footer -->
 <footer id="footer">
