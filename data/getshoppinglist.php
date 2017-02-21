@@ -13,9 +13,6 @@ $sql = "SELECT item.item_description, item.item_brand, refrigerator_items.quanti
 		INNER JOIN refrigerator_items ON refrigerator_items.item_id = item.item_id 
 		WHERE refrigerator_items.refrigerator_id = " . $userid .";";
 
-//echo $sql;
-
-
 $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
 
 //create an array
