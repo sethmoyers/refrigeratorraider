@@ -77,15 +77,9 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
     			$("#shopping").hide();
 		}
 			setUser();
+			loadShoppingList();
 			location.hash = '';				
 		};
-	$scope.loadShoppingList = function() {
-		if (!isCart) {
-			$http.get("data/getshoppinglist.php").success(function(data, status, headers, config) {
-				$scope.items = data.hits
-			});
-		}
-	}
 	
 	// *** Local Storage Routines ***
 	$scope.saveList = function() {
@@ -115,6 +109,19 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		var storage = localStorage.getItem("my_cart");
 		// parse the data to JSON
 		$scope.items = JSON.parse(storage);
+	}
+
+	function loadShoppingList() {
+		if (!isCart) {
+			$http.get("data/getshoppinglist.php",
+				{
+					params: {
+								user_id: getUser()
+							}
+				}).success(function(data, status, headers, config) {
+				$scope.items = data.hits
+			});
+		}
 	}
 
 	//SETH BREAKS THINGS HERE
