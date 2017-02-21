@@ -39,18 +39,6 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	 		$scope.items[index].quantity = parseInt($scope.items[index].quantity) - 1;
 		}
 	};
-	$scope.saveList = function() {
-		var storage = JSON.stringify($scope.items);
-		localStorage.setItem("my_cart", storage);
-	};
-	$scope.deleteList = function() {
-		localStorage.removeItem("my_cart");
-	};
-	$scope.placeOrder = function() {
-		alert("Thank you for you Order.  Your Order has been placed.");
-		var storage = JSON.stringify($scope.items);
-		localStorage.setItem("my_cart", storage);
-	};
 	$scope.updateTotal = function() {
 		var sum = 0;
 		angular.forEach($scope.items, function(item) {
@@ -58,6 +46,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		});
 		return sum;
 	};
+	// *** Turn menu items on and off depending on persona
 	$scope.getUserMenu = function() {
 		switch ($(usertype).val()) {
 			case '1':  // Refrigerator Owner
@@ -77,8 +66,6 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeraider").hide();
-    			// $("article#logon").removeClass("active");
-    			// $("body").removeClass("is-article-visible");
         		break;
     		case '3':  // Refrigerator Raider
     			$('[href="#logon"]').text('Change Persona');
@@ -89,23 +76,45 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
     			$("#supplier").hide()
     			$("#shopping").hide();
 		}
-		console.log('noooo');
-
-		location.hash = '';
-							
+			setUser();
+			location.hash = '';				
 		};
-	function loadCart() {// load cart from local storage
-		// retrieve data from local storage
-		var storage = localStorage.getItem("my_cart");
-		// parse the data to JSON
-		$scope.items = JSON.parse(storage);
-	}
 	$scope.loadShoppingList = function() {
 		if (!isCart) {
 			$http.get("data/getshoppinglist.php").success(function(data, status, headers, config) {
 				$scope.items = data.hits
 			});
 		}
+	}
+	
+	// *** Local Storage Routines ***
+	$scope.saveList = function() {
+		var storage = JSON.stringify($scope.items);
+		localStorage.setItem("my_cart", storage);
+	};
+	$scope.deleteList = function() {
+		localStorage.removeItem("my_cart");
+	};
+	$scope.placeOrder = function() {
+		alert("Thank you for you Order.  Your Order has been placed.");
+		var storage = JSON.stringify($scope.items);
+		localStorage.setItem("my_cart", storage);
+	};
+	function setUser() {// Store User in local storage
+		// Set User data to local storage 
+		// 1=refrigerator owner, 2=business manager, 3=refrigerator raider
+		// Value returned from Logon Screen
+		localStorage.setItem("rr_user", ($(usertype).val()));
+	}
+	function getUser() {// Get User from local storage
+		// retrieve data from local storage
+		return localStorage.getItem("rr_user");
+	}
+	function loadCart() {// load cart from local storage
+		// retrieve data from local storage
+		var storage = localStorage.getItem("my_cart");
+		// parse the data to JSON
+		$scope.items = JSON.parse(storage);
 	}
 
 	//SETH BREAKS THINGS HERE
