@@ -58,7 +58,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		});
 		return sum;
 	};
-$scope.getUserMenu = function() {
+	$scope.getUserMenu = function() {
 		switch ($(usertype).val()) {
 			case '1':  // Refrigerator Owner
 				$('[href="#logon"]').text('Change Persona');
@@ -68,7 +68,7 @@ $scope.getUserMenu = function() {
     			$("#help").show();
     			$("#supplier").hide();
     			$("#fridgeraider").hide();
-        		break;
+    			break;
     		case '2':  // Business Manager
     			$('[href="#logon"]').text('Change Persona');
     			$("#fridgeowner").show();
@@ -89,7 +89,9 @@ $scope.getUserMenu = function() {
     			$("#supplier").hide()
     			$("#shopping").hide();
 		}
-	};
+		console.log('noooo');
+
+		};
 	function loadCart() {// load cart from local storage
 		// retrieve data from local storage
 		var storage = localStorage.getItem("my_cart");
@@ -103,4 +105,25 @@ $scope.getUserMenu = function() {
 			});
 		}
 	}
+
+	//SETH BREAKS THINGS HERE
+	function loadSuppliers () {
+
+		console.log('Here');
+		$http.get("data/getsuppliers.php").success(function(data, status, headers, config) {
+			$scope.suppliers = data.hits
+		});
+		console.log($scope.suppliers);
+	}
+
+	$scope.newSupplier = function() {
+		var storage = JSON.stringify($scope.suppliers);
+		localStorage.setItem("my_cart", storage);
+	};
+	//DONE BREAKING STUFF
+
+
+
 });
+
+
