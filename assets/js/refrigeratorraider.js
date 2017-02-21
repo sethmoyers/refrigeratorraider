@@ -77,9 +77,6 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeraider").hide();
-    			// $("article#logon").addClass("close");
-    			// $("article#logon").removeClass("active");
-    			// $("body").removeClass("is-article-visible");
         		break;
     		case '3':  // Refrigerator Raider
     			$('[href="#logon"]').text('Change Persona');
