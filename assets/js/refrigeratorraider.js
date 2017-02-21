@@ -91,6 +91,8 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		}
 		console.log('noooo');
 
+		location.hash = '';
+							
 		};
 	function loadCart() {// load cart from local storage
 		// retrieve data from local storage
