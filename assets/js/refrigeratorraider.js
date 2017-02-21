@@ -2,42 +2,63 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	// check to see if local storage is empty
 	if (localStorage.getItem("my_cart") != null) {
 		console.log("Local Storage Exist!");
-		var isCart = true;
 		loadCart();
 		// load from local storage
 	} else {
 		// else load default if nothing found in local storage
-		$scope.items = [{
-			item_description : 'Eggs',
-			item_brand : 'Stop and Shop',
-			item_quantity : 1
+		$scope.shopping_list_items = [{
+			"item_description" : "Eggs",
+			"item_brand" : "Stop and Shop",
+			"item_quantity" : 1
 		}, {
-			item_description : 'Bread',
-			item_brand : 'Wonder',
-			item_quantity : 1
+			"item_description" : "Bread",
+			"item_brand" : "Wonder",
+			"item_quantity" : 1
 		}, {
-			item_description : 'Milk',
-			item_brand : 'Dairy Fresh',
-			item_quantity : 1
+			"item_description" : "Milk",
+			"item_brand" : "Crowleys",
+			"item_quantity" : 1
 		}];
 	}
-	$scope.removeItem = function(index) {
-		$scope.items.splice(index, 1);
+	$scope.removeShoppingListItem = function(index) {
+		$scope.shopping_list_items.splice(index, 1);
 	};
-	$scope.newItem = function(index) {
+	$scope.newShoppingListItem = function(index) {
+		$scope.shopping_list_items.push({
+			"item_description" : "Item",
+			"item_brand" : "Brand",
+			"item_quantity" : 1
+		});
+	};
+	$scope.newItem = function(index) {  // new refrigerator item
 		$scope.items.push({
 			item_description : 'New Item',
 			item_brand : 'Store Brand',
 			item_quantity : 1
 		});
 	};
-	 $scope.incrementItem = function(index) {
+	 $scope.incrementShoppingListItem = function(index) {
+	 	$scope.shopping_list_items[index].quantity = parseInt($scope.shopping_list_items[index].quantity) + 1;
+	};
+	 $scope.decrementShoppingListItem = function(index) {
+	 	if (parseInt($scope.items[index].quantity) > 0) {
+	 		$scope.shopping_list_items[index].quantity = parseInt($scope.shopping_list_items[index].quantity) - 1;
+		}
+	};
+	 $scope.incrementItem = function(index) {  // increment refrigerator item
 	 	$scope.items[index].quantity = parseInt($scope.items[index].quantity) + 1;
 	};
-	 $scope.decrementItem = function(index) {
+	 $scope.decrementItem = function(index) {    //  decrement refrigerator item
 	 	if (parseInt($scope.items[index].quantity) > 0) {
 	 		$scope.items[index].quantity = parseInt($scope.items[index].quantity) - 1;
 		}
+	};
+	$scope.saveList = function() {
+		var storage = JSON.stringify($scope.items);
+		localStorage.setItem("my_cart", storage);
+	};
+	$scope.removeItem = function(index) {
+		$scope.items.splice(index, 1);
 	};
 	$scope.updateTotal = function() {
 		var sum = 0;
@@ -77,27 +98,21 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
     			$("#shopping").hide();
 		}
 			setUser();
+			loadFridgeItems();
 			location.hash = '';				
 		};
-	$scope.loadShoppingList = function() {
-		if (!isCart) {
-			$http.get("data/getshoppinglist.php").success(function(data, status, headers, config) {
-				$scope.items = data.hits
-			});
-		}
-	}
 	
 	// *** Local Storage Routines ***
-	$scope.saveList = function() {
-		var storage = JSON.stringify($scope.items);
+	$scope.saveShoppingList = function() {
+		var storage = JSON.stringify($scope.shopping_list_items);
 		localStorage.setItem("my_cart", storage);
 	};
-	$scope.deleteList = function() {
+	$scope.deleteShoppingList = function() {
 		localStorage.removeItem("my_cart");
 	};
-	$scope.placeOrder = function() {
+	$scope.placeShoppingListOrder = function() {
 		alert("Thank you for you Order.  Your Order has been placed.");
-		var storage = JSON.stringify($scope.items);
+		var storage = JSON.stringify($scope.shopping_list_items);
 		localStorage.setItem("my_cart", storage);
 	};
 	function setUser() {// Store User in local storage
@@ -114,7 +129,17 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		// retrieve data from local storage
 		var storage = localStorage.getItem("my_cart");
 		// parse the data to JSON
-		$scope.items = JSON.parse(storage);
+		$scope.shopping_list_items = JSON.parse(storage);
+	}
+	function loadFridgeItems() {
+			$http.get("data/getfridgeitems.php",
+				{
+					params: {
+								user_id: getUser()
+							}
+				}).success(function(data, status, headers, config) {
+				$scope.items = data.hits
+			});
 	}
 
 	//SETH BREAKS THINGS HERE
@@ -129,7 +154,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 
 	$scope.newSupplier = function() {
 		var storage = JSON.stringify($scope.suppliers);
-		localStorage.setItem("my_cart", storage);
+		localStorage.setItem("my_suppliers", storage); //bda: changed from my_cart to my_suppliers.  You were overwriting my my_cart variable
 	};
 	//DONE BREAKING STUFF
 

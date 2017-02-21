@@ -98,7 +98,6 @@ Date: February 13, 2017
 							</tr>
 						</tbody>
 					</table>
-					<div ng-init="loadShoppingList()"></div>
 				</div>
 			</article>
 			<!-- Refridgerator of Owner -->
@@ -131,7 +130,6 @@ Date: February 13, 2017
 			</table>
 			<button class="button" style="width:275px" ng-click="newItem()">Add Item</button>
 			<button class="button" style="width:275px" ng-click="saveList()">Save List</button>
-			<div ng-init="loadShoppingList()"></div>
 		</div>
 	</article>
 	<!-- Shopping List -->
@@ -148,27 +146,26 @@ Date: February 13, 2017
 					<th></th>
 				</tr>
 			</thead>
-			<tbody ng-repeat="item in items">
+			<tbody ng-repeat="shopping_list_item in shopping_list_items">
 				<tr>
-					<td> <input class="black" ng-model="item.item_description" size="15">
+					<td> <input class="black" ng-model="shopping_list_item.item_description" size="15">
 				</td>
 				<td>
-					<input class="black" ng-model="item.item_brand" size="11">
+					<input class="black" ng-model="shopping_list_item.item_brand" size="12">
 				</td>
 				<td>
-					<input class="black" ng-model="item.quantity" size="2">
+					<input class="black" ng-model="shopping_list_item.quantity" size="2">
 				</td>
-				<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
-				<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td>
-				<td><button class="fa fa-trash" aria-hidden="true" ng-click="removeItem($index)"></button></td>
+				<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
+				<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td>
+				<td><button class="fa fa-trash" aria-hidden="true" ng-click="removeShoppingListItem($index)"></button></td>
 			</tr>
 		</tbody>
 	</table>
-	<button class="button" style="width:275px" ng-click="newItem()">Add Item</button>
-	<button class="button" style="width:275px" ng-click="saveList()">Save List</button>
-	<button class="button" style="width:275px" ng-click="placeOrder()">Place Order</button>
-	<button class="button" style="width:275px" ng-click="deleteList()">Delete List</button>
-	<div ng-init="loadShoppingList()"></div>
+	<button class="button" style="width:275px" ng-click="newShoppingListItem()">Add Item</button>
+	<button class="button" style="width:275px" ng-click="saveShoppingList()">Save List</button>
+	<button class="button" style="width:275px" ng-click="placeShoppingListOrder()">Place Order</button>
+	<button class="button" style="width:275px" ng-click="deleteShoppingList()">Delete List</button>
 </div>
 </article>
 <!-- About -->
