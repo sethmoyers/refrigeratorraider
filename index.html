@@ -5,7 +5,7 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 Modified by: Bryant Austin and Seth Moyers
 For: Boston University Class Project CS633
-				Term Project for Team 8:	Bryant Austin
+Term Project for Team 8:	Bryant Austin
 Kayla Birdsall
 Ant Cassetta
 Seth Moyers
@@ -20,7 +20,7 @@ Date: February 13, 2017
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
+			<link rel="stylesheet" href="assets/css/noscript.css" />
 		</noscript>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/angular10.js"></script>
@@ -52,14 +52,14 @@ Date: February 13, 2017
 						<li id="logon">
 							<a href="#logon">Logon</a>
 						</li>
-						<li id="supplier">
-							<a href="#view_suppliers">Supplier</a>
+						<li id="viewsupplier">
+							<a href="#viewsuppliers">Supplier</a>
 						</li>
 						<li id="fridgeraider">
-							<a href="#fridgeraider">Refrigerator</a>  <!-- Refrigerator for Raider -->
+							<a href="#fridgeraider">Refrigerator</a><!-- Refrigerator for Raider -->
 						</li>
 						<li id="fridgeowner">
-							<a href="#fridgeowner">Refrigerator</a>   <!-- Refrigerator for Owner -->
+							<a href="#fridgeowner">Refrigerator</a><!-- Refrigerator for Owner -->
 						</li>
 						<li id="shopping">
 							<a href="#shopping">Shopping List</a>
@@ -88,244 +88,252 @@ Date: February 13, 2017
 								</tr>
 							</thead>
 							<tfoot>
-						<tr></tr>
-						</tfoot>
-						<tbody ng-repeat="item in items">
+								<tr></tr>
+							</tfoot>
+							<tbody ng-repeat="item in items">
+								<tr>
+									<td> {{item.item_description}} </td>
+									<td> {{item.item_brand}} </td>
+									<td> {{item.quantity}} </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+				<!-- Refridgerator of Owner -->
+				<article id="fridgeowner">
+					<h2 class="major">Refrigerator Contents</h2>
+					<div class="table-wrapper">
+						<table>
 							<tr>
-								<td> {{item.item_description}} </td>
-								<td> {{item.item_brand}} </td>
-								<td> {{item.quantity}} </td>
+								<th>Description</th>
+								<th>Brand</th>
+								<th>Qty</th>
+								<th></th>
+								<th></th>
 							</tr>
-						</tbody>
-					</table>
-				</div>
-			</article>
-			<!-- Refridgerator of Owner -->
-			<article id="fridgeowner">
-				<h2 class="major">Refrigerator Contents</h2>
-				<div class="table-wrapper">
-					<table>
-						<tr>
-							<th>Description</th>
-							<th>Brand</th>
-							<th>Qty</th>
-							<th></th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody ng-repeat="item in items">
-						<tr>
-							<td> <input class="black" ng-model="item.item_description" size="15">
-						</td>
-						<td>
-							<input class="black" ng-model="item.item_brand" size="11">
-						</td>
-						<td>
-							<input class="black" ng-model="item.quantity" size="2">
-						</td>
-						<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
-						<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td>
-					</tr>
-				</tbody>
-			</table>
-			<button class="button" style="width:275px" ng-click="newItem()">Add Item</button>
-			<button class="button" style="width:275px" ng-click="saveList()">Save List</button>
+							</thead>
+							<tbody ng-repeat="item in items">
+								<tr>
+									<td>
+									<input class="black" ng-model="item.item_description" size="15">
+									</td>
+									<td>
+									<input class="black" ng-model="item.item_brand" size="11">
+									</td>
+									<td>
+									<input class="black" ng-model="item.quantity" size="2">
+									</td>
+									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
+									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td>
+								</tr>
+							</tbody>
+						</table>
+						<button class="button" style="width:275px" ng-click="newItem()">
+							Add Item
+						</button>
+						<button class="button" style="width:275px" ng-click="saveList()">
+							Save List
+						</button>
+					</div>
+				</article>
+				<!-- Shopping List -->
+				<article id="shopping">
+					<h2 class="major">Shopping List</h2>
+					<div class="table-wrapper">
+						<table ng-init="createShoppingList()">
+							<tr>
+								<th>Description</th>
+								<th>Brand</th>
+								<th>Qty</th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody ng-repeat="shopping_list_item in shopping_list_items">
+								<tr>
+									<td>
+									<input class="black" ng-model="shopping_list_item.item_description" size="15">
+									</td>
+									<td>
+									<input class="black" ng-model="shopping_list_item.item_brand" size="12">
+									</td>
+									<td>
+									<input class="black" ng-model="shopping_list_item.quantity" size="2">
+									</td>
+									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
+									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td>
+									<td><button class="fa fa-trash" aria-hidden="true" ng-click="removeShoppingListItem($index)"></button></td>
+								</tr>
+							</tbody>
+						</table>
+						<button class="button" style="width:275px" ng-click="newShoppingListItem()">
+							Add Item
+						</button>
+						<button class="button" style="width:275px" ng-click="saveShoppingList()">
+							Save List
+						</button>
+						<button class="button" style="width:275px" ng-click="placeShoppingListOrder()">
+							Place Order
+						</button>
+						<button class="button" style="width:275px" ng-click="deleteShoppingList()">
+							Delete List
+						</button>
+					</div>
+				</article>
+				<!-- About -->
+				<article id="about">
+					<h2 class="major">About</h2>
+					<p>
+						The purpose of the term project is to follow key phases of software product development.
+						It is a chance to pilot, adopt and implement the best practices covered in the course.
+					</p>
+					<p></p>
+					<p>
+						Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. The app allows users to input products and related quantities into an online virtual refrigerator and receive alerts when items are running low.
+					</p>
+				</article>
+				<!-- Help -->
+				<article id="help">
+					<h2 class="major">Help</h2>
+					<div>
+						<p>
+							Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. The app allows users to input products and related quantities into an online
+							Virtual refrigerator and receive alerts when items are running low.
+							For help or enhancement requests,  please contact us at (818) 555-5111 or at customerservice@abcmsdevelopment.com.
+						</p>
+						<p>
+							<strong>Q: Who are the creators?</strong>
+						</p>
+						<p>
+							A: The creators of this project are all students at Boston University. The project team was established as a part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security Management.
+						</p>
+						<p>
+							<strong>Q: Where did the idea of Refrigerator Raiders come from?</strong>
+						</p>
+						<p>
+							A: The team originally started out with a bunch of different ideas, including a meal tracking application to input and view nutritional content and an application that allows you to share what food is in your fridge and it provides recipes based on that information. With further team discussion, the idea evolved into Refrigerator Raiders.
+						</p>
+						<p>
+							<strong>Q: What did you use to create the application?</strong>
+						</p>
+						<p>
+							To create the application, we used HTML5/JavaScript/PHP and other JavaScript Libraries and HTML Templates.
+						</p>
+						<p>
+							<strong>Q: How come I cannot view my friend or relative's fridge?</strong>
+						</p>
+						<p>
+							A: The fridge owner must grant a Refrigerator raider (or view only user) to see the contents of the fridge. If you have trouble with setting up these permissions, please contact us at (818) 555-5111 or at customerservice@abcmsdevelopment.com.
+						</p>
+						<p>
+							<strong>Q: What enhancements will come next for Refrigerator Raiders?</strong>
+						</p>
+						<p>
+							A: With the short class deadline, we limited our scope for the first release. Some enhancement ideas include:  identifying sale items, allowing actual ordering to supermarkets and API sites like Amazon Fresh, filtering options, sending emails for list capabilities, pictures of each item, scanning item barcode to input it into system, and more.
+						</p>
+					</div>
+				</article>
+				<article id="logon">
+					<h2 class="major">Logon</h2>
+					<div class="field">
+						<label for="usertype">Please Select Persona</label>
+						<div class="select-wrapper">
+							<select name="usertype" id="usertype">
+								<option value="1">Refrigerator Owner</option>
+								<option value="2">Business Manager</option>
+								<option value="3">Refrigerator Raider</option>
+							</select>
+						</div>
+					</div>
+					<div>
+						<p></p>
+						<button class="button special" ng-click="getUserMenu()" href="#header">
+							Sign On
+						</button>
+					</div>
+				</article>
+				<!-- Supplier -->
+				<article id="newsupplier">
+					<h2 class="major">Supplier Information</h2>
+					<div class="field half first">
+						<label for="reg_firstname">First Name</label>
+						<input type="text" name="reg_firstname" id="reg_firstname" />
+					</div>
+					<div class="field half">
+						<label for="reg_lastname">Last Name</label>
+						<input type="text" name="reg_lastname" id="reg_lastname" />
+					</div>
+					<div class="field half first">
+						<label for="reg_mail">Email</label>
+						<input type="text" name="reg_email" id="reg_email" />
+					</div>
+					<div></div>
+					<div class="field half">
+						<label for="phonenum">Phone Number</label>
+						<input type="text" name="phonenum" id="phonenum" />
+					</div>
+					<div class="field">
+						<label for="bus_name">Business Name</label>
+						<input type="text" name="bus_name" id="bus_name" />
+					</div>
+					<ul class="actions">
+						<li>
+							<button class="button" style="width:275px" ng-click="newSupplier()">
+								Add Supplier
+							</button>
+						</li>
+						<li>
+							<input type="reset" value="Reset" />
+						</li>
+					</ul>
+				</article>
+				<article id="viewsuppliers">
+					<h2 class="major">View Suppliers</h2>
+					<div class="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Email</th>
+									<th>Business Name</th>
+									<th>Phone Number</th>
+								</tr>
+							</thead>
+							<tbody ng-repeat="supplier in suppliers">
+								<tr>
+									<td>{{supplier.first_name}}</td>
+									<td>{{supplier.last_name}}</td>
+									<td>{{supplier.email}}</td>
+									<td>{{supplier.business_name}}</td>
+									<td>{{supplier.phone_number}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<nav>
+							<ul>
+								<li id="addsupplier">
+									<a href="#newSupplier">Add</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</article>
+			</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">
+					&copy; Refrigerator Raider: <a href="http://www.bu.edu">BU MET CS633</a>.
+				</p>
+			</footer>
 		</div>
-	</article>
-	<!-- Shopping List -->
-	<article id="shopping">
-		<h2 class="major">Shopping List</h2>
-		<div class="table-wrapper">
-			<table ng-init="createShoppingList()">
-				<tr>
-					<th>Description</th>
-					<th>Brand</th>
-					<th>Qty</th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody ng-repeat="shopping_list_item in shopping_list_items">
-				<tr>
-					<td> <input class="black" ng-model="shopping_list_item.item_description" size="15">
-				</td>
-				<td>
-					<input class="black" ng-model="shopping_list_item.item_brand" size="12">
-				</td>
-				<td>
-					<input class="black" ng-model="shopping_list_item.quantity" size="2">
-				</td>
-				<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
-				<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td>
-				<td><button class="fa fa-trash" aria-hidden="true" ng-click="removeShoppingListItem($index)"></button></td>
-			</tr>
-		</tbody>
-	</table>
-	<button class="button" style="width:275px" ng-click="newShoppingListItem()">Add Item</button>
-	<button class="button" style="width:275px" ng-click="saveShoppingList()">Save List</button>
-	<button class="button" style="width:275px" ng-click="placeShoppingListOrder()">Place Order</button>
-	<button class="button" style="width:275px" ng-click="deleteShoppingList()">Delete List</button>
-</div>
-</article>
-<!-- About -->
-<article id="about">
-<h2 class="major">About</h2>
-<p>The purpose of the term project is to follow key phases of software product development.
-	It is a chance to pilot, adopt and implement the best practices covered in the course.
-</p>
-<p></p>
-<p>Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. The app allows users to input products and related quantities into an online virtual refrigerator and receive alerts when items are running low.
-</p>
-</article>
-<!-- Help -->
-<article id="help">
-<h2 class="major">Help</h2>
-<div>
-	<p>
-		Refrigerator Raider is a web-based application designed for both personal and commercial refrigerator inventory management. The app allows users to input products and related quantities into an online
-		Virtual refrigerator and receive alerts when items are running low.
-		For help or enhancement requests,  please contact us at (818) 555-5111 or at customerservice@abcmsdevelopment.com.
-	</p>
-	<p>
-		<strong>Q: Who are the creators?</strong>
-	</p>
-	<p>
-		A: The creators of this project are all students at Boston University. The project team was established as a part of a Boston University Metropolitan College class, MET CS633, Software Quality, Testing and Security Management.
-	</p>
-	<p>
-		<strong>Q: Where did the idea of Refrigerator Raiders come from?</strong>
-	</p>
-	<p>
-		A: The team originally started out with a bunch of different ideas, including a meal tracking application to input and view nutritional content and an application that allows you to share what food is in your fridge and it provides recipes based on that information. With further team discussion, the idea evolved into Refrigerator Raiders.
-	</p>
-	<p>
-		<strong>Q: What did you use to create the application?</strong>
-	</p>
-	<p>
-		To create the application, we used HTML5/JavaScript/PHP and other JavaScript Libraries and HTML Templates.
-	</p>
-	<p>
-		<strong>Q: How come I cannot view my friend or relative's fridge?</strong>
-	</p>
-	<p>
-		A: The fridge owner must grant a Refrigerator raider (or view only user) to see the contents of the fridge. If you have trouble with setting up these permissions, please contact us at (818) 555-5111 or at customerservice@abcmsdevelopment.com.
-	</p>
-	<p>
-		<strong>Q: What enhancements will come next for Refrigerator Raiders?</strong>
-	</p>
-	<p>
-		A: With the short class deadline, we limited our scope for the first release. Some enhancement ideas include:  identifying sale items, allowing actual ordering to supermarkets and API sites like Amazon Fresh, filtering options, sending emails for list capabilities, pictures of each item, scanning item barcode to input it into system, and more.
-	</p>
-</div>
-</article>
-<article id="logon">
-<h2 class="major">Logon</h2>
-<div class="field">
-	<label for="usertype">Please Select Persona</label>
-	<div class="select-wrapper">
-		<select name="usertype" id="usertype">
-			<option value="1">Refrigerator Owner</option>
-			<option value="2">Business Manager</option>
-			<option value="3">Refrigerator Raider</option>
-		</select>
-	</div>
-</div>
-<div>
-	<p></p>
-	<button class="button special" ng-click="getUserMenu()" href="#header">Sign On</button>
-</div>
-</article>
-<!-- Supplier -->
-<article id="supplier">
-<h2 class="major">Supplier Information</h2>
-<form method="post" action="#">
-	<div class="field half first">
-		<label for="reg_firstname">First Name</label>
-		<input type="text" name="reg_firstname" id="reg_firstname" />
-	</div>
-	<div class="field half">
-		<label for="reg_lastname">Last Name</label>
-		<input type="text" name="reg_lastname" id="reg_lastname" />
-	</div>
-	<div class="field half first">
-		<label for="reg_mail">Email</label>
-		<input type="text" name="reg_email" id="reg_email" />
-	</div>
-	<div></div>
-	<div class="field half">
-		<label for="phonenum">Phone Number</label>
-		<input type="text" name="phonenum" id="phonenum" />
-	</div>
-	<div class="field">
-		<label for="bus_name">Business Name</label>
-		<input type="text" name="bus_name" id="bus_name" />
-	</div>
-	<ul class="actions">
-		<li>\
-			<button class="button" style="width:275px" ng-click="newSupplier()">Add Supplier</button>
-		</li>
-		<li>
-			<input type="reset" value="Reset" />
-		</li>
-	</ul>
-</form>
-</article>
-
-
-<article id="view_suppliers">
-		<h2 class="major">View Suppliers</h2>
-		<div ng-init="loadSuppliers()"></div>
-		<div class="table-wrapper">
-			<table>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>Business Name</th>
-					<th>Phone Number</th>
-				</tr>
-			</thead>
-			<tbody ng-repeat="supplier in supplier">
-				<tr>
-					<td> <input class="black" ng-model="supplier.first_name" size="15">
-				</td>
-				<td>
-					<input class="black" ng-model="supplier.last_name" size="11">
-				</td>
-				<td>
-					<input class="black" ng-model="supplier.email" size="2">
-				</td>
-				<td>
-					<input class="black" ng-model="supplier.business_name" size="11">
-				</td>
-				<td>
-					<input class="black" ng-model="supplier.phone_number" size="2">
-				</td>
-
-			</tr>
-		</tbody>
-	</table>
-	<button class="button" style="width:275px" ng-click="newSupplier()">Add Item</button>
-	<a href="#supplier">Supplier</a>
-</div>
-</article>
-
-
-
-</div>
-<!-- Footer -->
-<footer id="footer">
-<p class="copyright">
-&copy; Refrigerator Raider: <a href="http://www.bu.edu">BU MET CS633</a>.
-</p>
-</footer>
-</div>
-<!-- BG -->
-<div id="bg"></div>
-<!-- Scripts -->
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-</body>
+		<!-- BG -->
+		<div id="bg"></div>
+		<!-- Scripts -->
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
 </html>

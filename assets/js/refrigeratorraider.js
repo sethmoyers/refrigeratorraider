@@ -55,14 +55,14 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
         		$("#shopping").show();
         		$("#about").show();
     			$("#help").show();
-    			$("#supplier").hide();
+    			$("#viewsupplier").hide();
     			$("#fridgeraider").hide();
     			break;
     		case '2':  // Business Manager
     			$('[href="#logon"]').text('Change Persona');
     			$("#fridgeowner").show();
         		$("#shopping").show();
-    			$("#supplier").show();
+    			$("#viewsupplier").show();
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeraider").hide();
@@ -73,11 +73,12 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeowner").hide();
-    			$("#supplier").hide();
+    			$("#viewsupplier").hide();
     			$("#shopping").hide();
 		}
 			setUser();
 			loadFridgeItems();
+			loadSuppliers();
 			location.hash = '';				
 		};
 	
@@ -145,21 +146,22 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 			});
 	}
 
-	//SETH BREAKS THINGS HERE
-	function loadSuppliers () {
-
-		console.log('Here');
-		$http.get("data/getsuppliers.php").success(function(data, status, headers, config) {
-			$scope.suppliers = data.hits;
-		});
-		console.log($scope.suppliers);
+	// Modified: 02-22-2017 by B. Austin
+	function loadSuppliers() {
+			$http.get("data/getsuppliers.php",
+				{
+					params: {
+								user_id: getUser()
+							}
+				}).success(function(data, status, headers, config) {
+				$scope.suppliers = data.hits;
+			});
 	}
-
 	$scope.newSupplier = function() {
 		var storage = JSON.stringify($scope.suppliers);
 		localStorage.setItem("my_suppliers", storage); //bda: changed from $scope.my_cart to my_suppliers.  You were overwriting my $scope.my_cart variable
 	};
-	//DONE BREAKING STUFF
+	
 
 
 
