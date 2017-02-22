@@ -73,7 +73,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
         		$("#about").show();
     			$("#help").show();
     			$("#fridgeowner").hide();
-    			$("#supplier").hide()
+    			$("#supplier").hide();
     			$("#shopping").hide();
 		}
 			setUser();
@@ -96,7 +96,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	};
 	$scope.createShoppingList = function() {
 			// check to see if local storage is empty
-		if (localStorage.getItem($scope.my_cart) != null) {
+		if (localStorage.getItem($scope.my_cart) !== null) {
 			console.log("Local Storage Exist!");
 			loadCart();
 		// load from local storage
@@ -141,7 +141,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 								user_id: getUser()
 							}
 				}).success(function(data, status, headers, config) {
-				$scope.items = data.hits
+				$scope.items = data.hits;
 			});
 	}
 
@@ -150,7 +150,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 
 		console.log('Here');
 		$http.get("data/getsuppliers.php").success(function(data, status, headers, config) {
-			$scope.suppliers = data.hits
+			$scope.suppliers = data.hits;
 		});
 		console.log($scope.suppliers);
 	}
