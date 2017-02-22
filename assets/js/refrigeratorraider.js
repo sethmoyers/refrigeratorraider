@@ -1,25 +1,4 @@
 angular.module("myApp", []).controller('CartController', function($scope, $http) {
-	// check to see if local storage is empty
-	if (localStorage.getItem("my_cart") != null) {
-		console.log("Local Storage Exist!");
-		loadCart();
-		// load from local storage
-	} else {
-		// else load default if nothing found in local storage
-		$scope.shopping_list_items = [{
-			"item_description" : "Eggs",
-			"item_brand" : "Stop and Shop",
-			"item_quantity" : 1
-		}, {
-			"item_description" : "Bread",
-			"item_brand" : "Wonder",
-			"item_quantity" : 1
-		}, {
-			"item_description" : "Milk",
-			"item_brand" : "Crowleys",
-			"item_quantity" : 1
-		}];
-	}
 	$scope.removeShoppingListItem = function(index) {
 		$scope.shopping_list_items.splice(index, 1);
 	};
@@ -55,7 +34,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	};
 	$scope.saveList = function() {
 		var storage = JSON.stringify($scope.items);
-		localStorage.setItem("my_cart", storage);
+		localStorage.setItem($scope.my_cart, storage);
 	};
 	$scope.removeItem = function(index) {
 		$scope.items.splice(index, 1);
@@ -105,21 +84,45 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	// *** Local Storage Routines ***
 	$scope.saveShoppingList = function() {
 		var storage = JSON.stringify($scope.shopping_list_items);
-		localStorage.setItem("my_cart", storage);
+		localStorage.setItem($scope.my_cart, storage);
 	};
 	$scope.deleteShoppingList = function() {
-		localStorage.removeItem("my_cart");
+		localStorage.removeItem($scope.my_cart);
 	};
 	$scope.placeShoppingListOrder = function() {
 		alert("Thank you for you Order.  Your Order has been placed.");
 		var storage = JSON.stringify($scope.shopping_list_items);
-		localStorage.setItem("my_cart", storage);
+		localStorage.setItem($scope.my_cart, storage);
+	};
+	$scope.createShoppingList = function() {
+			// check to see if local storage is empty
+		if (localStorage.getItem($scope.my_cart) != null) {
+			console.log("Local Storage Exist!");
+			loadCart();
+		// load from local storage
+		} else {
+		// else load default if nothing found in local storage
+			$scope.shopping_list_items = [{
+				"item_description" : "Eggs",
+				"item_brand" : "Stop and Shop",
+				"item_quantity" : 1
+			}, {
+				"item_description" : "Bread",
+				"item_brand" : "Wonder",
+				"item_quantity" : 1
+			}, {
+				"item_description" : "Milk",
+				"item_brand" : "Crowleys",
+				"item_quantity" : 1
+			}];
+		}
 	};
 	function setUser() {// Store User in local storage
 		// Set User data to local storage 
 		// 1=refrigerator owner, 2=business manager, 3=refrigerator raider
 		// Value returned from Logon Screen
 		localStorage.setItem("rr_user", ($(usertype).val()));
+		$scope.my_cart = "cart" + ($(usertype).val()).toString();
 	}
 	function getUser() {// Get User from local storage
 		// retrieve data from local storage
@@ -127,7 +130,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	}
 	function loadCart() {// load cart from local storage
 		// retrieve data from local storage
-		var storage = localStorage.getItem("my_cart");
+		var storage = localStorage.getItem($scope.my_cart);
 		// parse the data to JSON
 		$scope.shopping_list_items = JSON.parse(storage);
 	}
@@ -154,7 +157,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 
 	$scope.newSupplier = function() {
 		var storage = JSON.stringify($scope.suppliers);
-		localStorage.setItem("my_suppliers", storage); //bda: changed from my_cart to my_suppliers.  You were overwriting my my_cart variable
+		localStorage.setItem("my_suppliers", storage); //bda: changed from $scope.my_cart to my_suppliers.  You were overwriting my $scope.my_cart variable
 	};
 	//DONE BREAKING STUFF
 
