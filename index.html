@@ -254,41 +254,7 @@ Date: February 13, 2017
 						</button>
 					</div>
 				</article>
-				<!-- Supplier -->
-				<article id="newsupplier">
-					<h2 class="major">Supplier Information</h2>
-					<div class="field half first">
-						<label for="reg_firstname">First Name</label>
-						<input type="text" name="reg_firstname" id="reg_firstname" />
-					</div>
-					<div class="field half">
-						<label for="reg_lastname">Last Name</label>
-						<input type="text" name="reg_lastname" id="reg_lastname" />
-					</div>
-					<div class="field half first">
-						<label for="reg_mail">Email</label>
-						<input type="text" name="reg_email" id="reg_email" />
-					</div>
-					<div></div>
-					<div class="field half">
-						<label for="phonenum">Phone Number</label>
-						<input type="text" name="phonenum" id="phonenum" />
-					</div>
-					<div class="field">
-						<label for="bus_name">Business Name</label>
-						<input type="text" name="bus_name" id="bus_name" />
-					</div>
-					<ul class="actions">
-						<li>
-							<button class="button" style="width:275px" ng-click="newSupplier()">
-								Add Supplier
-							</button>
-						</li>
-						<li>
-							<input type="reset" value="Reset" />
-						</li>
-					</ul>
-				</article>
+				<!-- View Suppliers -->
 				<article id="viewsuppliers">
 					<h2 class="major">View Suppliers</h2>
 					<div class="table-wrapper">
@@ -312,13 +278,7 @@ Date: February 13, 2017
 								</tr>
 							</tbody>
 						</table>
-						<nav>
-							<ul>
-								<li id="addsupplier">
-									<a href="#newSupplier">Add</a>
-								</li>
-							</ul>
-						</nav>
+						<button class="button" style="width:275px" ng-click="newSupplier()">Add Supplier</button>
 					</div>
 				</article>
 			</div>

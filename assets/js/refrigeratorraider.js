@@ -16,6 +16,15 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 			item_quantity : 1
 		});
 	};
+	$scope.newSupplier = function(index) {
+		$scope.suppliers.push({
+			"first_name" : "First",
+			"last_name" : "Last",
+			"email" : "email@abccorp.com",
+			"business_name" : "New Business",
+			"phone_number" : "212-555-1212"
+		});
+	};
 	 $scope.incrementShoppingListItem = function(index) {
 	 	$scope.shopping_list_items[index].quantity = parseInt($scope.shopping_list_items[index].quantity) + 1;
 	};
@@ -157,13 +166,6 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 				$scope.suppliers = data.hits;
 			});
 	}
-	$scope.newSupplier = function() {
-		var storage = JSON.stringify($scope.suppliers);
-		localStorage.setItem("my_suppliers", storage); //bda: changed from $scope.my_cart to my_suppliers.  You were overwriting my $scope.my_cart variable
-	};
-	
-
-
 
 });
 
