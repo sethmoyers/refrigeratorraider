@@ -1,28 +1,29 @@
-angular.module("myApp", []).controller('CartController', function($scope, $http) {
+angular.module("myApp", [])
+.controller('CartController', function($scope, $http) {
 	$scope.removeShoppingListItem = function(index) {
 		$scope.shopping_list_items.splice(index, 1);
 	};
 	$scope.newShoppingListItem = function(index) {
 		$scope.shopping_list_items.push({
-			"item_description" : "Item",
-			"item_brand" : "Brand",
+			"item_description" : "",
+			"item_brand" : "",
 			"item_quantity" : 1
 		});
 	};
 	$scope.newItem = function(index) {  // new refrigerator item
 		$scope.items.push({
-			item_description : 'New Item',
-			item_brand : 'Store Brand',
-			item_quantity : 1
+			"item_description" : "",
+			"item_brand" : "",
+			"item_quantity" : 1
 		});
 	};
 	$scope.newSupplier = function(index) {
 		$scope.suppliers.push({
-			"first_name" : "First",
-			"last_name" : "Last",
-			"email" : "email@abccorp.com",
-			"business_name" : "New Business",
-			"phone_number" : "212-555-1212"
+			"first_name" : "",
+			"last_name" : "",
+			"email" : "",
+			"business_name" : "",
+			"phone_number" : ""
 		});
 	};
 	 $scope.incrementShoppingListItem = function(index) {
@@ -104,8 +105,13 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 		var storage = JSON.stringify($scope.shopping_list_items);
 		localStorage.setItem($scope.my_cart, storage);
 	};
-	$scope.createShoppingList = function() {
-			// check to see if local storage is empty
+	function setUser() {// Store User in local storage
+		// Set User data to local storage 
+		// 1=refrigerator owner, 2=business manager, 3=refrigerator raider
+		// Value returned from Logon Screen
+		localStorage.setItem("rr_user", ($(usertype).val()));
+		$scope.my_cart = "cart" + ($(usertype).val()).toString();
+		// check to see if local storage is empty
 		if (localStorage.getItem($scope.my_cart) !== null) {
 			console.log("Local Storage Exist!");
 			loadCart();
@@ -125,14 +131,8 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 				"item_brand" : "Crowleys",
 				"item_quantity" : 1
 			}];
+			$scope.saveShoppingList();
 		}
-	};
-	function setUser() {// Store User in local storage
-		// Set User data to local storage 
-		// 1=refrigerator owner, 2=business manager, 3=refrigerator raider
-		// Value returned from Logon Screen
-		localStorage.setItem("rr_user", ($(usertype).val()));
-		$scope.my_cart = "cart" + ($(usertype).val()).toString();
 	}
 	function getUser() {// Get User from local storage
 		// retrieve data from local storage
@@ -168,5 +168,7 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	}
 
 });
+
+
 
 
