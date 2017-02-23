@@ -36,7 +36,7 @@ $('#loginSubmit').on("click", function() {
 // *** except the LOGON Menu item
 // ***
 window.onload = function() {  // execute on form load
-	$("#supplier").hide();
+	$("#viewsupplier").hide();
     $("#about").hide();
     $("#help").hide();
     $("#fridgeraider").hide();
