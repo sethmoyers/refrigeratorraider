@@ -1,8 +1,8 @@
 <?php
 //phpinfo();
 //open connection to mysql db
-$connection = mysqli_connect("ausantnet.fatcowmysql.com","cs633user","termproject001","cs633") or die("Error " . mysqli_error($connection));
-//$connection = mysqli_connect("127.0.0.1","cs633user","termproject001","cs633") or die("Error " . mysqli_error($connection));
+//$connection = mysqli_connect("ausantnet.fatcowmysql.com","cs633user","termproject001","cs633") or die("Error " . mysqli_error($connection));
+$connection = mysqli_connect("127.0.0.1","cs633user","termproject001","cs633") or die("Error " . mysqli_error($connection));
 
 // user id for query passed from calling program
 $userid = $_GET['user_id'];
