@@ -256,32 +256,42 @@ Date: February 13, 2017
 				</article>
 				<!-- View Suppliers -->
 				<article id="viewsuppliers">
-					<h2 class="major">View Suppliers</h2>
-					<div class="table-wrapper">
-						<table>
-							<thead>
-								<tr>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Email</th>
-									<th>Business Name</th>
-									<th>Phone Number</th>
-								</tr>
-							</thead>
-							<tbody ng-repeat="supplier in suppliers">
-								<tr>
-									<td>{{supplier.first_name}}</td>
-									<td>{{supplier.last_name}}</td>
-									<td>{{supplier.email}}</td>
-									<td>{{supplier.business_name}}</td>
-									<td>{{supplier.phone_number}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<button class="button" style="width:100%" ng-click="newSupplier()">Add Supplier</button>
+							<h2 class="major">View Suppliers</h2>
+							<div class="table-wrapper">
+								<table>
+									<thead>
+										<tr>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Email</th>
+											<th>Business Name</th>
+											<th>Phone Number</th>
+										</tr>
+									</thead>
+									<tbody ng-repeat="supplier in suppliers">
+										<tr>
+											<td> 
+												<input class="black" ng-model="supplier.first_name">
+											</td>
+											<td>
+												<input class="black" ng-model="supplier.last_name">
+											</td>
+											<td>
+												<input class="black" ng-model="supplier.email">
+											</td>
+											<td>
+												<input class="black" ng-model="supplier.business_name">
+											</td>
+											<td>
+												<input class="black" ng-model="supplier.phone_number">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<button class="button" style="width:100%" ng-click="newSupplier()">Add Supplier</button>
+							</div>
+						</article>
 					</div>
-				</article>
-			</div>
 			<!-- Footer -->
 			<footer id="footer">
 				<p class="copyright">

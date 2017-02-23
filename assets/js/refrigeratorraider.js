@@ -4,25 +4,25 @@ angular.module("myApp", []).controller('CartController', function($scope, $http)
 	};
 	$scope.newShoppingListItem = function(index) {
 		$scope.shopping_list_items.push({
-			"item_description" : "Item",
-			"item_brand" : "Brand",
+			"item_description" : "",
+			"item_brand" : "",
 			"item_quantity" : 1
 		});
 	};
 	$scope.newItem = function(index) {  // new refrigerator item
 		$scope.items.push({
-			item_description : 'New Item',
-			item_brand : 'Store Brand',
-			item_quantity : 1
+			"item_description" : "",
+			"item_brand" : "",
+			"item_quantity" : 1
 		});
 	};
 	$scope.newSupplier = function(index) {
 		$scope.suppliers.push({
-			"first_name" : "First",
-			"last_name" : "Last",
-			"email" : "email@abccorp.com",
-			"business_name" : "New Business",
-			"phone_number" : "212-555-1212"
+			"first_name" : "",
+			"last_name" : "",
+			"email" : "",
+			"business_name" : "",
+			"phone_number" : ""
 		});
 	};
 	 $scope.incrementShoppingListItem = function(index) {
