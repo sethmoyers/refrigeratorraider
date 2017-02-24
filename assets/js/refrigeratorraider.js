@@ -5,25 +5,25 @@ angular.module("myApp", [])
 	};
 	$scope.newShoppingListItem = function(index) {
 		$scope.shopping_list_items.push({
-			"item_description" : "",
-			"item_brand" : "",
-			"item_quantity" : 1
+			item_description : "",
+			item_brand : "",
+			item_quantity : 1
 		});
 	};
 	$scope.newItem = function(index) {  // new refrigerator item
 		$scope.items.push({
-			"item_description" : "",
-			"item_brand" : "",
-			"item_quantity" : 1
+			item_description : "",
+			item_brand : "",
+			item_quantity : 1
 		});
 	};
 	$scope.newSupplier = function(index) {
 		$scope.suppliers.push({
-			"first_name" : "",
-			"last_name" : "",
-			"email" : "",
-			"business_name" : "",
-			"phone_number" : ""
+			first_name : "",
+			last_name : "",
+			email : "",
+			business_name : "",
+			phone_number : ""
 		});
 	};
 	 $scope.incrementShoppingListItem = function(index) {
@@ -119,17 +119,17 @@ angular.module("myApp", [])
 		} else {
 		// else load default if nothing found in local storage
 			$scope.shopping_list_items = [{
-				"item_description" : "Eggs",
-				"item_brand" : "Stop and Shop",
-				"item_quantity" : 1
+				item_description : "Eggs",
+				item_brand : "Stop and Shop",
+				item_quantity : 1
 			}, {
-				"item_description" : "Bread",
-				"item_brand" : "Wonder",
-				"item_quantity" : 1
+				item_description : "Bread",
+				item_brand : "Wonder",
+				item_quantity : 1
 			}, {
-				"item_description" : "Milk",
-				"item_brand" : "Crowleys",
-				"item_quantity" : 1
+				item_description : "Milk",
+				item_brand : "Crowleys",
+				item_quantity : 1
 			}];
 			$scope.saveShoppingList();
 		}
