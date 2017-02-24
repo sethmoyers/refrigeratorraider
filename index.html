@@ -49,25 +49,25 @@ Date: February 13, 2017
 				</div>
 				<nav>
 					<ul>
-						<li id="logon">
+						<li id="logon_menu">
 							<a href="#logon">Logon</a>
 						</li>
-						<li id="viewsupplier">
+						<li id="viewsupplier_menu">
 							<a href="#viewsuppliers">Supplier</a>
 						</li>
-						<li id="fridgeraider">
+						<li id="fridgeraider_menu">
 							<a href="#fridgeraider">Refrigerator</a><!-- Refrigerator for Raider -->
 						</li>
-						<li id="fridgeowner">
+						<li id="fridgeowner_menu">
 							<a href="#fridgeowner">Refrigerator</a><!-- Refrigerator for Owner -->
 						</li>
-						<li id="shopping">
+						<li id="shopping_menu">
 							<a href="#shopping">Shopping List</a>
 						</li>
-						<li id="about">
+						<li id="about_menu">
 							<a href="#about">About</a>
 						</li>
-						<li id="help">
+						<li id="help_menu">
 							<a href="#help">Help</a>
 						</li>
 					</ul>
@@ -154,13 +154,13 @@ Date: February 13, 2017
 							<tbody ng-repeat="shopping_list_item in shopping_list_items">
 								<tr>
 									<td>
-									<input class="black" ng-model="shopping_list_item.item_description" size="15">
+									<input class="black" ng-model="shopping_list_item.description" size="15">
 									</td>
 									<td>
-									<input class="black" ng-model="shopping_list_item.item_brand" size="12">
+									<input class="black" ng-model="shopping_list_item.brand" size="12">
 									</td>
 									<td>
-									<input class="black" ng-model="shopping_list_item.quantity" size="2">
+									<input class="black onlyNumbers" ng-model="shopping_list_item.quantity" size="2">
 									</td>
 									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
 									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td>

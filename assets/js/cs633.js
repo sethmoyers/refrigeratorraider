@@ -5,18 +5,11 @@
 // ***
 // window.onload = function() {  // execute on form load
 $(document).ready(function() {
-	$("#viewsupplier").hide();
-	$("#about").hide();
-	$("#help").hide();
-	$("#fridgeraider").hide();
-	$("#fridgeowner").hide();
-	$("#shopping").hide();
-
 	// ** Added: 02-23-2017 B. Austin
 	// ** Validate Quantity Fields are Numbers Only
 	// **
 	console.log( "Finished Hiding Menu Items" );
-	$('#onlyNumbersbda').bind('keydown',function(event){
+	$('.onlyNumbers').bind('keydown',function(event){
 		// the keycode for the key pressed 
 		var keyCode = event.which;
 		console.log( "Binding One" );
@@ -50,4 +43,12 @@ $(document).ready(function() {
 		$input.val(value);
 	});
 console.log( "Leaving Module" );
+
+	$("#viewsupplier_menu").hide();
+	$("#about_menu").hide();
+	$("#help_menu").hide();
+	$("#fridgeraider_menu").hide();
+	$("#fridgeowner_menu").hide();
+	$("#shopping_menu").hide();
+
 });
