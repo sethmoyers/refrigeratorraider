@@ -5,16 +5,16 @@ angular.module("myApp", [])
 	};
 	$scope.newShoppingListItem = function(index) {
 		$scope.shopping_list_items.push({
-			item_description : "",
-			item_brand : "",
-			item_quantity : "1"
+			description : "",
+			brand : "",
+			quantity : 1
 		});
 	};
 	$scope.newItem = function(index) {  // new refrigerator item
 		$scope.items.push({
 			item_description : "",
 			item_brand : "",
-			item_quantity : 1
+			quantity : 1
 		});
 	};
 	$scope.newSupplier = function(index) {
@@ -30,7 +30,7 @@ angular.module("myApp", [])
 	 	$scope.shopping_list_items[index].quantity = parseInt($scope.shopping_list_items[index].quantity) + 1;
 	};
 	 $scope.decrementShoppingListItem = function(index) {
-	 	if (parseInt($scope.items[index].quantity) > 0) {
+	 	if (parseInt($scope.shopping_list_items[index].quantity) > 0) {
 	 		$scope.shopping_list_items[index].quantity = parseInt($scope.shopping_list_items[index].quantity) - 1;
 		}
 	};
@@ -61,30 +61,30 @@ angular.module("myApp", [])
 		switch ($(usertype).val()) {
 			case '1':  // Refrigerator Owner
 				$('[href="#logon"]').text('Change Persona');
-				$("#fridgeowner").show();
-        		$("#shopping").show();
-        		$("#about").show();
-    			$("#help").show();
-    			$("#viewsupplier").hide();
-    			$("#fridgeraider").hide();
+				$("#fridgeowner_menu").show();
+        		$("#shopping_menu").show();
+        		$("#about_menu").show();
+    			$("#help_menu").show();
+    			$("#viewsupplier_menu").hide();
+    			$("#fridgeraider_menu").hide();
     			break;
     		case '2':  // Business Manager
     			$('[href="#logon"]').text('Change Persona');
-    			$("#fridgeowner").show();
-        		$("#shopping").show();
-    			$("#viewsupplier").show();
-        		$("#about").show();
-    			$("#help").show();
-    			$("#fridgeraider").hide();
+    			$("#fridgeowner_menu").show();
+        		$("#shopping_menu").show();
+    			$("#viewsupplier_menu").show();
+        		$("#about_menu").show();
+    			$("#help_menu").show();
+    			$("#fridgeraider_menu").hide();
         		break;
     		case '3':  // Refrigerator Raider
     			$('[href="#logon"]').text('Change Persona');
-    			$("#fridgeraider").show();
-        		$("#about").show();
-    			$("#help").show();
-    			$("#fridgeowner").hide();
-    			$("#viewsupplier").hide();
-    			$("#shopping").hide();
+    			$("#fridgeraider_menu").show();
+        		$("#about_menu").show();
+    			$("#help_menu").show();
+    			$("#fridgeowner_menu").hide();
+    			$("#viewsupplier_menu").hide();
+    			$("#shopping_menu").hide();
 		}
 			setUser();
 			loadFridgeItems();
@@ -119,17 +119,17 @@ angular.module("myApp", [])
 		} else {
 		// else load default if nothing found in local storage
 			$scope.shopping_list_items = [{
-				item_description : "Eggs",
-				item_brand : "Stop and Shop",
-				item_quantity : 1
+				description : "Eggs",
+				brand : "Stop and Shop",
+				quantity : 1
 			}, {
-				item_description : "Bread",
-				item_brand : "Wonder",
-				item_quantity : 1
+				description : "Bread",
+				brand : "Wonder",
+				quantity : 1
 			}, {
-				item_description : "Milk",
-				item_brand : "Crowleys",
-				item_quantity : 1
+				description : "Milk",
+				brand : "Crowleys",
+				quantity : 1
 			}];
 			$scope.saveShoppingList();
 		}
