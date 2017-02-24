@@ -96,9 +96,11 @@ angular.module("myApp", [])
 	$scope.saveShoppingList = function() {
 		var storage = JSON.stringify($scope.shopping_list_items);
 		localStorage.setItem($scope.my_cart, storage);
+		alert("Your shopping List has been save.");
 	};
 	$scope.deleteShoppingList = function() {
 		localStorage.removeItem($scope.my_cart);
+		alert("Your shopping List will be deleted when you leave this screen. The default list will be loaded the next time you return.  Or you can hit the Save button now to resave your current list.");
 	};
 	$scope.placeShoppingListOrder = function() {
 		alert("Thank you for you Order.  Your Order has been placed.");

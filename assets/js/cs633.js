@@ -8,8 +8,8 @@ $(document).ready(function() {
 	// ** Added: 02-23-2017 B. Austin
 	// ** Validate Quantity Fields are Numbers Only
 	// **
-	console.log( "Finished Hiding Menu Items" );
-	$('.onlyNumbers').bind('keydown',function(event){
+	console.log( "Start of Binding Code" );
+	$(".onlyNumbers").on("keydown",function(event){
 		// the keycode for the key pressed 
 		var keyCode = event.which;
 		console.log( "Binding One" );
