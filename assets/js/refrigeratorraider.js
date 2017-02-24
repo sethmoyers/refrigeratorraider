@@ -7,7 +7,7 @@ angular.module("myApp", [])
 		$scope.shopping_list_items.push({
 			item_description : "",
 			item_brand : "",
-			item_quantity : 1
+			item_quantity : "1"
 		});
 	};
 	$scope.newItem = function(index) {  // new refrigerator item
@@ -42,10 +42,10 @@ angular.module("myApp", [])
 	 		$scope.items[index].quantity = parseInt($scope.items[index].quantity) - 1;
 		}
 	};
-	$scope.saveList = function() {
-		var storage = JSON.stringify($scope.items);
-		localStorage.setItem($scope.my_cart, storage);
-	};
+	// $scope.saveList = function() {
+	// 	var storage = JSON.stringify($scope.items);
+	// 	localStorage.setItem($scope.my_cart, storage);
+	// };
 	$scope.removeItem = function(index) {
 		$scope.items.splice(index, 1);
 	};
