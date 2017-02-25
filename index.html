@@ -109,23 +109,23 @@ Date: February 13, 2017
 								<th>Description</th>
 								<th>Brand</th>
 								<th>Qty</th>
-								<th></th>
-								<th></th>
+								<!-- <th></th>
+								<th></th> -->
 							</tr>
 							</thead>
 							<tbody ng-repeat="item in items">
 								<tr>
 									<td>
-									<input class="black" ng-model="item.item_description" size="15">
+									<input class="black" ng-model="item.item_description" size="25">
 									</td>
 									<td>
-									<input class="black" ng-model="item.item_brand" size="11">
+									<input class="black" ng-model="item.item_brand" size="25">
 									</td>
 									<td>
-									<input class="black onlyNumbers" ng-model="item.quantity" size="2">
+									<input class="black" string-to-number ng-model="item.quantity" size="2" type="number" min="1" max="99">
 									</td>
-									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
-									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td>
+									<!-- <td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
+									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td> -->
 								</tr>
 							</tbody>
 						</table>
@@ -147,23 +147,23 @@ Date: February 13, 2017
 								<th>Brand</th>
 								<th>Qty</th>
 								<th></th>
-								<th></th>
-								<th></th>
+								<!-- <th></th>
+								<th></th> -->
 							</tr>
 							</thead>
 							<tbody ng-repeat="shopping_list_item in shopping_list_items">
 								<tr>
 									<td>
-									<input class="black" ng-model="shopping_list_item.description" size="15">
+									<input class="black" ng-model="shopping_list_item.description" size="25">
 									</td>
 									<td>
-									<input class="black" ng-model="shopping_list_item.brand" size="12">
+									<input class="black" ng-model="shopping_list_item.brand" size="20">
 									</td>
 									<td>
-									<input class="black onlyNumbers" ng-model="shopping_list_item.quantity" size="2">
+									<input class="black" ng-model="shopping_list_item.quantity" size="2" type="number" min="1" max="99">
 									</td>
-									<td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
-									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td>
+									<!-- <td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
+									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td> -->
 									<td><button class="fa fa-trash" aria-hidden="true" ng-click="removeShoppingListItem($index)"></button></td>
 								</tr>
 							</tbody>

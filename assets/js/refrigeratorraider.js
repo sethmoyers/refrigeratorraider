@@ -96,7 +96,7 @@ angular.module("myApp", [])
 	$scope.saveShoppingList = function() {
 		var storage = JSON.stringify($scope.shopping_list_items);
 		localStorage.setItem($scope.my_cart, storage);
-		alert("Your shopping List has been save.");
+		alert("Your shopping List has been saved.");
 	};
 	$scope.saveShoppingCartFirstRun = function() {
 		var storage = JSON.stringify($scope.shopping_list_items);
@@ -172,7 +172,26 @@ angular.module("myApp", [])
 				$scope.suppliers = data.hits;
 			});
 	}
+})
+// Modified: 02-24-2017 by B. Austin to convert string to number in string-to-number Angular filter
+.run(function($rootScope) {
+  $rootScope.typeOf = function(value) {
+    return typeof value;
+  };
+})
 
+.directive('stringToNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      ngModel.$parsers.push(function(value) {
+        return '' + value;
+      });
+      ngModel.$formatters.push(function(value) {
+        return parseFloat(value);
+      });
+    }
+  };
 });
 
 
