@@ -77,6 +77,7 @@ Date: February 13, 2017
 			<div id="main">
 				<!-- Refrigerator of Raider -->
 				<article id="fridgeraider">
+				<form>
 					<h2 class="major">Refrigerator Contents</h2>
 					<div class="table-wrapper">
 						<table>
@@ -99,9 +100,11 @@ Date: February 13, 2017
 							</tbody>
 						</table>
 					</div>
+					</form>
 				</article>
 				<!-- Refridgerator of Owner -->
 				<article id="fridgeowner">
+				<form>
 					<h2 class="major">Refrigerator Contents</h2>
 					<div class="table-wrapper">
 						<table>
@@ -116,13 +119,13 @@ Date: February 13, 2017
 							<tbody ng-repeat="item in items">
 								<tr>
 									<td>
-									<input class="black" ng-model="item.item_description" size="25">
+									<input class="black" ng-model="item.item_description" size="20">
 									</td>
 									<td>
 									<input class="black" ng-model="item.item_brand" size="20">
 									</td>
 									<td>
-									<input class="black" string-to-number ng-model="item.quantity" size="2" type="number" min="1" max="99">
+									<input class="black" string-to-number ng-model="item.quantity" size="2" type="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' min="1" max="99">
 									</td>
 									<!-- <td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementItem($index)"></button></td>
 									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementItem($index)"></button></td> -->
@@ -136,9 +139,11 @@ Date: February 13, 2017
 							Save List
 						</button> -->
 					</div>
+					</form>
 				</article>
 				<!-- Shopping List -->
 				<article id="shopping">
+				<form>
 					<h2 class="major">Shopping List</h2>
 					<div class="table-wrapper">
 						<table>
@@ -160,7 +165,7 @@ Date: February 13, 2017
 									<input class="black" ng-model="shopping_list_item.brand" size="20">
 									</td>
 									<td>
-									<input class="black" ng-model="shopping_list_item.quantity" size="2" type="number" min="1" max="99">
+									<input class="black" ng-model="shopping_list_item.quantity" size="2" type="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' min="1" max="99">
 									</td>
 									<!-- <td><button class="fa fa-minus-square" aria-hidden="true" ng-click="decrementShoppingListItem($index)"></button></td>
 									<td><button class="fa fa-plus-square" aria-hidden="true" ng-click="incrementShoppingListItem($index)"></button></td> -->
@@ -181,6 +186,7 @@ Date: February 13, 2017
 							Delete List
 						</button>
 					</div>
+					</form>
 				</article>
 				<!-- About -->
 				<article id="about">
