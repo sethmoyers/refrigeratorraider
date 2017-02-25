@@ -172,7 +172,6 @@ angular.module("myApp", [])
 				$scope.suppliers = data.hits;
 			});
 	}
-
 });
 
 
