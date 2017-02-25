@@ -98,6 +98,10 @@ angular.module("myApp", [])
 		localStorage.setItem($scope.my_cart, storage);
 		alert("Your shopping List has been save.");
 	};
+	$scope.saveShoppingCartFirstRun = function() {
+		var storage = JSON.stringify($scope.shopping_list_items);
+		localStorage.setItem($scope.my_cart, storage);
+	};
 	$scope.deleteShoppingList = function() {
 		localStorage.removeItem($scope.my_cart);
 		alert("Your shopping List will be deleted when you leave this screen. The default list will be loaded the next time you return.  Or you can hit the Save button now to resave your current list.");
@@ -133,7 +137,7 @@ angular.module("myApp", [])
 				brand : "Crowleys",
 				quantity : 1
 			}];
-			$scope.saveShoppingList();
+			$scope.saveShoppingCartFirstRun();
 		}
 	}
 	function getUser() {// Get User from local storage

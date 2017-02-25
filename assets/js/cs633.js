@@ -4,12 +4,14 @@
 // *** except the LOGON Menu item
 // ***
 // window.onload = function() {  // execute on form load
-$(document).ready(function() {
+window.onload = function() {  // execute on form load {
 	// ** Added: 02-23-2017 B. Austin
 	// ** Validate Quantity Fields are Numbers Only
 	// **
 	console.log( "Start of Binding Code" );
-	$(".onlyNumbers").on("keydown",function(event){
+	var thor = $(".onlyNumbers");
+	console.log("***THOR*** ===> " + thor);
+	thor.bind("keydown",function(event){
 		// the keycode for the key pressed 
 		var keyCode = event.which;
 		console.log( "Binding One" );
@@ -51,4 +53,4 @@ console.log( "Leaving Module" );
 	$("#fridgeowner_menu").hide();
 	$("#shopping_menu").hide();
 
-});
+};
